@@ -1,9 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"authoritymanage/initialize"
+	"authoritymanage/router"
 )
 
+func init() {
+	initialize.Init()
+}
+
 func main() {
-	fmt.Println("成功")
+	engine := router.GetEngine()
+	if err := engine.Run(":8010"); err != nil {
+		panic(err)
+	}
 }
